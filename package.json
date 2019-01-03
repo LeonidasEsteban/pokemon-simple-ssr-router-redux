@@ -10,7 +10,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack --mode production",
     "build:server": "babel src -d dist/ssr",
-    "build:client:watch": "npm run build:client -- -w",
+    "build:client:watch": "webpack --mode development -w",
     "build:server:watch": "npm run build:server -- -w"
   },
   "author": "",

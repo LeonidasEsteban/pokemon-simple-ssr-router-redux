@@ -5,7 +5,7 @@ const renderJS = (file) => {
   return ''
 }
 
-const body = ({title, html, css, js}) => (`
+const body = ({title, html, css, js, data}) => (`
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -16,9 +16,10 @@ const body = ({title, html, css, js}) => (`
     <title>${title}</title>
   </head>
   <body>
-    <div id="app">
-      ${html}
-    </div>
+    <div id="app">${html}</div>
+    <script>
+      window.data = ${JSON.stringify(data)}
+    </script>
     ${renderJS(js)}
   </body>
   </html>

@@ -11,6 +11,7 @@ const renderPokemonPage = async (req, res) => {
     res.send(body({
       title: 'Quien es ese pokemon',
       html: ssr(pokemon).content,
+      data: pokemon,
       css: 'styles',
       js: 'app'
     }))
