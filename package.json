@@ -5,18 +5,33 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server",
+    "start:dev": "nodemon server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "webpack --mode production",
+    "build:server": "babel src -d dist/ssr",
+    "build:client:watch": "npm run build:client -- -w",
+    "build:server:watch": "npm run build:server -- -w"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "4.16.4",
-    "install": "0.12.2",
     "isomorphic-fetch": "2.2.1",
-    "nodemon": "1.18.9",
-    "npm": "6.5.0",
     "react": "16.7.0",
+    "react-dom": "16.7.0",
     "react-router": "4.3.1",
     "redux": "4.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.2.3",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.4",
+    "nodemon": "1.18.9",
+    "react-loader": "2.4.5",
+    "webpack": "4.28.3",
+    "webpack-cli": "3.1.2"
   }
 }

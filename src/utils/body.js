@@ -1,6 +1,6 @@
 const renderJS = (file) => {
   if (file) {
-    return `<script src="/public/js/${file}.js"></script>`
+    return `<script src="/dist/${file}.js"></script>`
   }
   return ''
 }
@@ -16,7 +16,9 @@ const body = ({title, html, css, js}) => (`
     <title>${title}</title>
   </head>
   <body>
-    ${html}
+    <div id="app">
+      ${html}
+    </div>
     ${renderJS(js)}
   </body>
   </html>

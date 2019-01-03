@@ -4,6 +4,7 @@ const renderPokemonPage = require('./src/utils/render-pokemon')
 const app = express();
 
 app.use('/public', express.static(`${__dirname}/static`))
+app.use('/dist', express.static(`${__dirname}/dist/js`))
 
 
 // app.get('/', (req, res) => {

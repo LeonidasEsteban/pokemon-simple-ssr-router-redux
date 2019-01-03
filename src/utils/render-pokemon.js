@@ -1,17 +1,21 @@
 const api = require('./api')
 const body = require('./body')
 
+const ssr = require('../../dist/ssr/utils/server-data')
+
 const renderPokemonPage = async (req, res) => {
   const id = req.params.id
   const pokemon = await api.getPokemon(id)
+
   if (pokemon) {
     res.send(body({
       title: 'Quien es ese pokemon',
-      html: `El pokemon es ${pokemon.name}`,
+      html: ssr(pokemon).content,
       css: 'styles',
       js: 'app'
     }))
   }
+
   res.send(body({
     html: 'no hay pokemon paila',
     css: 'styles',
