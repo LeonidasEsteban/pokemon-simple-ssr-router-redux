@@ -2,12 +2,13 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    app: './src/components/app',
+    client: './src/client',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {

@@ -1,5 +1,5 @@
 const express = require('express')
-const renderPokemonPage = require('./src/utils/render-pokemon')
+const pokemonView = require('./src/views/pokemon')
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use('/dist', express.static(`${__dirname}/dist/js`))
 // })
 
 
-app.get('/pokemon/:id', renderPokemonPage)
+app.get('/pokemon/:id', pokemonView)
 
 // app.use((req, res, next) => {
 //   res.status(404).send('Sorry cant find that!');

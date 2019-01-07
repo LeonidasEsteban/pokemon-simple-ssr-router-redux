@@ -5,7 +5,7 @@ const renderJS = (file) => {
   return ''
 }
 
-const body = ({title, html, css, js, data}) => (`
+const body = ({title, html, css, js, data, styles = ''}) => (`
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -14,6 +14,7 @@ const body = ({title, html, css, js, data}) => (`
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link rel="stylesheet" href="/public/css/${css}.css" />
     <title>${title}</title>
+    ${styles}
   </head>
   <body>
     <div id="app">${html}</div>

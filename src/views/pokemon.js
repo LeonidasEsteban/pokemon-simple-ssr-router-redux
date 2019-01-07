@@ -1,7 +1,6 @@
-const api = require('./api')
-const body = require('./body')
+const api = require('../utils/api')
+const body = require('../utils/body')
 const cache = require('memory-cache')
-
 
 const ssr = require('../../dist/ssr/utils/server-data')
 
@@ -16,7 +15,8 @@ const renderPokemonPage = async (req, res) => {
       html: ssr(pokemonCache).content,
       data: pokemonCache,
       css: 'styles',
-      js: 'app'
+      styles: ssr(pokemonCache).styles,
+      js: 'client'
     }))
     res.end()
   }
@@ -30,7 +30,8 @@ const renderPokemonPage = async (req, res) => {
       html: ssr(pokemon).content,
       data: pokemon,
       css: 'styles',
-      js: 'app'
+      styles: ssr(pokemonCache).styles,
+      js: 'client'
     }))
     res.end()
   }
