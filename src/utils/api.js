@@ -1,5 +1,6 @@
 const BASE_API = 'https://pokeapi.co/api/v2/'
 require('isomorphic-fetch')
+require('es6-promise').polyfill()
 
 class api {
   async getPokemon(id) {

@@ -55,13 +55,13 @@ const Pokemon = ({ name, sprites, moves, types, id }) => (
     <img src={sprites.front_shiny} alt="" />
     <img src={sprites.back_shiny} alt="" />
     <ul>
-      {types.map(({ type })=>(
-        <PokemonType type={type.name} />
+      {types.map(({ type }) => (
+        <PokemonType type={type.name} key={type.name} />
       ))}
     </ul>
     <ol>
-      {moves.map(({ move })=>(
-        <li>{move.name}</li>
+      {moves.map(({ move }) => (
+        <li key={move.name} >{move.name}</li>
       ))}
     </ol>
   </PokemonStyled>

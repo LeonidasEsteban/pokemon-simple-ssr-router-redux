@@ -16,8 +16,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "es6-promise": "4.2.5",
     "express": "4.16.4",
     "isomorphic-fetch": "2.2.1",
+    "memory-cache": "0.2.0",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-router": "4.3.1",
