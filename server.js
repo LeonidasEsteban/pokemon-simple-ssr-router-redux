@@ -5,6 +5,7 @@ const app = express();
 
 app.use('/public', express.static(`${__dirname}/static`))
 app.use('/dist', express.static(`${__dirname}/dist/js`))
+app.use('/modules', express.static(`${__dirname}/node_modules`))
 
 
 // app.get('/', (req, res) => {

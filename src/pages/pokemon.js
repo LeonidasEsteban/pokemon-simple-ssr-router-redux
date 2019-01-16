@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import Pokemon from '../components/pokemon'
 import api from '../utils/api'
+import NProgress from 'nprogress'
 
 class PokemonPage extends Component {
+  state = {
+    loading: false
+  }
   componentWillReceiveProps(nextProps) {
     const {
       match: { params: { id } },
@@ -21,14 +25,15 @@ class PokemonPage extends Component {
     const {
       dispatch,
     } = this.props
+    NProgress.start()
     const pokemon = await api.getPokemon(id)
-    console.log(pokemon)
     dispatch({
       type: 'SET_POKEMON',
       payload: {
         pokemon
       }
     })
+    NProgress.done()
   }
   render() {
     return (
@@ -38,7 +43,6 @@ class PokemonPage extends Component {
 }
 
 function mapStateToProps({ pokemon }) {
-  console.log(pokemon)
   return {
     pokemon
   }
