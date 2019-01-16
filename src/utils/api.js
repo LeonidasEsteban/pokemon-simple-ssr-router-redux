@@ -1,10 +1,10 @@
 const BASE_API = 'https://pokeapi.co/api/v2/'
-require('isomorphic-fetch')
-require('es6-promise').polyfill()
+import 'isomorphic-fetch'
+// require('es6-promise').polyfill()
 
 class api {
   async getPokemon(id) {
-    const response = await fetch(`${BASE_API}pokemon/${id}`)
+    const response = await fetch(`${BASE_API}pokemon/${id}/`)
 
     if (response.status === 404) {
       return false
@@ -15,4 +15,4 @@ class api {
   }
 }
 
-module.exports = new api()
+export default new api()

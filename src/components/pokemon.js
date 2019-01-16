@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PokemonType from './pokemon-type'
 import leftPath from '../utils/left-path'
 import Triangle from './styled/triangle'
+import { Link } from 'react-router-dom'
 
 const BackGround = styled.div`
   width: 380px;
@@ -41,8 +42,10 @@ const PokemonStyled = styled.div`
 
 const Pokemon = ({ name, sprites, moves, types, id }) => (
   <PokemonStyled>
-    <a href={`/pokemon/${id-1}`}>prev</a>
-    <a href={`/pokemon/${id+1}`}>next</a>
+    <Link to={`/pokemon/${id - 1}`}>prev</Link>
+    <Link to={`/pokemon/${id + 1}`}>next</Link>
+    {/* <a href={`/pokemon/${id-1}`}>prev</a> */}
+    {/* <a href={`/pokemon/${id+1}`}>next</a> */}
     <BackGround>
       <RightSide type="left" width={500} color="rgba(0,0,0, .2)" height={100}/>
       <LeftSide type="right" width={500} color="rgba(0,0,0, .2)" height={100}/>

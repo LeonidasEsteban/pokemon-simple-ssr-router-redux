@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
-    "start:dev": "nodemon server",
+    "start:dev": "nodemon --exec babel-node server",
     "build": "npm run build:client && npm run build:server",
     "build:client": "webpack --mode production",
     "build:server": "babel src -d dist/ssr",
@@ -16,6 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/node": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "7.2.3",
     "es6-promise": "4.2.5",
     "express": "4.16.4",
     "isomorphic-fetch": "2.2.1",
@@ -24,11 +26,13 @@
     "react-dom": "16.7.0",
     "react-redux": "6.0.0",
     "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
     "redux": "4.0.1"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",
     "@babel/core": "7.2.2",
+    "@babel/plugin-transform-runtime": "7.2.0",
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "babel-loader": "8.0.4",
