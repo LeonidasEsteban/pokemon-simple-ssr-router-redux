@@ -1,7 +1,8 @@
 const api = require('../utils/api').default
 const body = require('../utils/body')
 const cache = require('memory-cache')
-const ssr = require('../../dist/ssr/utils/server-data')
+// const ssr = require('../../dist/ssr/utils/server-data')
+const renderMiddleware = require('../utils/render-middleware')
 
 const renderPokemonPage = async (req, res) => {
   const id = req.params.id
@@ -16,10 +17,12 @@ const renderPokemonPage = async (req, res) => {
   }
 
   if(pokemonCache && pokemonCache.id.toString() === id) {
-    config.html = ssr(pokemonCache).content
-    config.styles = ssr(pokemonCache).styles,
+    const { content, styles } = renderMiddleware({pokemon: pokemonCache}, req.url)
+    config.html = content
+    config.styles = styles,
     config.data = pokemonCache
     console.log('respondimos con cache')
+
     res.send(body(config))
   }
 
@@ -27,8 +30,10 @@ const renderPokemonPage = async (req, res) => {
   cache.put('pokemon', pokemon)
 
   if (pokemon) {
-    config.html = ssr(pokemon).content
-    config.styles = ssr(pokemon).styles,
+    const { content, styles } = renderMiddleware({pokemon}, req.url)
+
+    config.html = content
+    config.styles = styles,
     config.data = pokemon
     res.send(body(config))
   }

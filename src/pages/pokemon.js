@@ -21,6 +21,12 @@ class PokemonPage extends Component {
     }
 
   }
+  componentDidMount() {
+    const {
+      match: { params: { id } },
+    } = this.props
+    this.searchPokemon(id)
+  }
   searchPokemon = async (id) => {
     const {
       dispatch,
@@ -36,6 +42,9 @@ class PokemonPage extends Component {
     NProgress.done()
   }
   render() {
+    if(!this.props.pokemon.name) {
+      return null
+    }
     return (
       <Pokemon {...this.props.pokemon} />
     )
