@@ -3,6 +3,9 @@ function pokemonReducer(state = {}, action) {
     case 'SET_POKEMON': {
       return { ...state, ...action.payload.pokemon }
     }
+    case 'SET_EMPTY': {
+      return false
+    }
     default: {
       return state
     }

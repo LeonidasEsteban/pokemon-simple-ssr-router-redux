@@ -54,6 +54,9 @@ const Pokemon = ({ name, sprites, moves, types, id, loading }) => (
     <Link to={`/pokemon/${id + 1}`}>
       <button>next</button>
     </Link>
+    <Link to={`/pokemon/sdasdas`}>
+      <button>asdass</button>
+    </Link>
     <h2 className="name">Nombre: {name}</h2>
     <hr/>
     <Image src={sprites.front_default} />

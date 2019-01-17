@@ -1,7 +1,6 @@
 const api = require('../utils/api').default
 const body = require('../utils/body')
 const cache = require('memory-cache')
-// const ssr = require('../../dist/ssr/utils/server-data')
 const renderMiddleware = require('../utils/render-middleware')
 
 const renderPokemonPage = async (req, res) => {
@@ -28,19 +27,19 @@ const renderPokemonPage = async (req, res) => {
 
   const pokemon = await api.getPokemon(id)
   cache.put('pokemon', pokemon)
+  console.log('pokemon', pokemon)
+  // if(!pokemon) {
+  //   const { context } = renderMiddleware({}, req.url)
 
-  if (pokemon) {
-    const { content, styles } = renderMiddleware({pokemon}, req.url)
-
-    config.html = content
-    config.styles = styles,
-    config.data = pokemon
-    res.send(body(config))
-  }
-
-  config.html = 'No hay pokemon paila'
-  config.js = ''
-  config.title = 'Pokemon no encontrado'
+  //   res.writeHead(302, {
+  //     Location: context.url
+  //   });
+  //   res.end();
+  // }
+  const { content, styles } = renderMiddleware({ pokemon }, req.url)
+  config.html = content
+  config.styles = styles,
+  config.data = pokemon
   res.send(body(config))
 
 }

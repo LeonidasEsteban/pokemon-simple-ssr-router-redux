@@ -4,14 +4,13 @@ import 'isomorphic-fetch'
 
 class api {
   async getPokemon(id) {
-    const response = await fetch(`${BASE_API}pokemon/${id}/`)
-
-    if (response.status === 404) {
+    try {
+      const response = await fetch(`${BASE_API}pokemon/${id}/`)
+      const pokemon = await response.json()
+      return pokemon
+    } catch {
       return false
-
     }
-    const pokemon = await response.json()
-    return pokemon
   }
 }
 

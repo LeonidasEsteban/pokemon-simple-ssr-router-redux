@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Pokemon from '../components/pokemon'
 import api from '../utils/api'
 import NProgress from 'nprogress'
+import NotFound from '../pages/not-found'
 
 class PokemonPage extends Component {
   state = {
@@ -33,17 +34,24 @@ class PokemonPage extends Component {
     } = this.props
     NProgress.start()
     const pokemon = await api.getPokemon(id)
-    dispatch({
-      type: 'SET_POKEMON',
-      payload: {
-        pokemon
-      }
-    })
+    if (pokemon) {
+      dispatch({
+        type: 'SET_POKEMON',
+        payload: {
+          pokemon
+        }
+      })
+    } else {
+      dispatch({
+        type: 'SET_EMPTY',
+      })
+    }
     NProgress.done()
   }
   render() {
     if(!this.props.pokemon.name) {
-      return null
+      console.log('no hay pokemon', this.props)
+      return <NotFound />
     }
     return (
       <Pokemon {...this.props.pokemon} />

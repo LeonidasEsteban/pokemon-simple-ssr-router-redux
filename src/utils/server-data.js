@@ -19,9 +19,11 @@ function render(store, url) {
     </StyleSheetManager>
   )
   const styleTags = sheet.getStyleTags()
+  console.log(context)
   return {
     content,
-    styles: styleTags
+    styles: styleTags,
+    context,
   }
 }
 
