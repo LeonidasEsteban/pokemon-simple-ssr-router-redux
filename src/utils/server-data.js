@@ -1,4 +1,4 @@
-import App from '../app'
+import Routes from '../routes'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
@@ -13,13 +13,12 @@ function render(store, url) {
     <StyleSheetManager sheet={sheet.instance}>
       <Provider store={store}>
         <StaticRouter location={url} context={context}>
-          <App />
+          <Routes />
         </StaticRouter>
       </Provider>
     </StyleSheetManager>
   )
   const styleTags = sheet.getStyleTags()
-  console.log(context)
   return {
     content,
     styles: styleTags,

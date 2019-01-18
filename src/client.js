@@ -1,7 +1,7 @@
 import React from 'react'
 import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './app'
+import Routes from './routes'
 import reducer from './reducers/index'
 import { createStore } from 'redux'
 import { BrowserRouter } from 'react-router-dom'
@@ -12,7 +12,7 @@ const store = createStore(reducer, {
 
 hydrate(
   <BrowserRouter>
-    <Provider store={store}><App /></Provider>
+    <Provider store={store}><Routes /></Provider>
   </BrowserRouter>
   ,
   document.querySelector('#app')

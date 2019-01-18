@@ -20,22 +20,11 @@ const renderPokemonPage = async (req, res) => {
     config.html = content
     config.styles = styles,
     config.data = pokemonCache
-    console.log('respondimos con cache')
-
     res.send(body(config))
   }
 
   const pokemon = await api.getPokemon(id)
   cache.put('pokemon', pokemon)
-  console.log('pokemon', pokemon)
-  // if(!pokemon) {
-  //   const { context } = renderMiddleware({}, req.url)
-
-  //   res.writeHead(302, {
-  //     Location: context.url
-  //   });
-  //   res.end();
-  // }
   const { content, styles } = renderMiddleware({ pokemon }, req.url)
   config.html = content
   config.styles = styles,

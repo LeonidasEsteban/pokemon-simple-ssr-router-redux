@@ -6,9 +6,6 @@ import NProgress from 'nprogress'
 import NotFound from '../pages/not-found'
 
 class PokemonPage extends Component {
-  state = {
-    loading: false
-  }
   componentWillReceiveProps(nextProps) {
     const {
       match: { params: { id } },
@@ -50,7 +47,6 @@ class PokemonPage extends Component {
   }
   render() {
     if(!this.props.pokemon.name) {
-      console.log('no hay pokemon', this.props)
       return <NotFound />
     }
     return (
