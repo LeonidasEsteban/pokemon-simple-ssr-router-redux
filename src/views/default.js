@@ -1,5 +1,5 @@
-const renderMiddleware = require('../utils/render-middleware')
-const body = require('../utils/body')
+import renderMiddleware from 'utils/render-middleware'
+import body from 'utils/body'
 
 const renderRouter = async (req, res) => {
   const { content, styles, context } = renderMiddleware({}, req.url)
@@ -16,4 +16,5 @@ const renderRouter = async (req, res) => {
     }))
   }
 }
-module.exports = renderRouter
+
+export default renderRouter

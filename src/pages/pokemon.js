@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import Pokemon from '../components/pokemon'
-import api from '../utils/api'
+import Pokemon from 'components/pokemon'
+import api from 'utils/api'
 import NProgress from 'nprogress'
-import NotFound from '../pages/not-found'
+import NotFound from 'pages/not-found'
 
 class PokemonPage extends Component {
   componentWillReceiveProps(nextProps) {

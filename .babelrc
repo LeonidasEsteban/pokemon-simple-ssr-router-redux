@@ -1,7 +1,29 @@
 {
   "plugins": [
-    "@babel/plugin-transform-runtime",
-    "@babel/plugin-proposal-class-properties"
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "components": "./src/components",
+          "pages": "./src/pages",
+          "reducers": "./src/reducers",
+          "utils": "./src/utils",
+          "views": "./src/views",
+          "styled": "./src/components/styled",
+          "dist": "./dist/",
+          "src": "./src/"
+        }
+      }
+    ],
+    [
+      "@babel/plugin-transform-runtime"
+    ],
+    [
+      "@babel/plugin-proposal-class-properties"
+    ]
   ],
   "presets": [
     "@babel/preset-env",

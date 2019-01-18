@@ -1,7 +1,7 @@
-const api = require('../utils/api').default
-const body = require('../utils/body')
-const cache = require('memory-cache')
-const renderMiddleware = require('../utils/render-middleware')
+import api from 'utils/api'
+import body from 'utils/body'
+import cache from 'memory-cache'
+import renderMiddleware from 'utils/render-middleware'
 
 const renderPokemonPage = async (req, res) => {
   const id = req.params.id
@@ -32,4 +32,5 @@ const renderPokemonPage = async (req, res) => {
   res.send(body(config))
 
 }
-module.exports = renderPokemonPage
+
+export default renderPokemonPage

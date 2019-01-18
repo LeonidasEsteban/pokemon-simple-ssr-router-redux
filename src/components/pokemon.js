@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import PokemonType from './pokemon-type'
-import leftPath from '../utils/left-path'
-import Triangle from './styled/triangle'
+import PokemonType from 'components/pokemon-type'
+import Triangle from 'styled/triangle'
 import { Link } from 'react-router-dom'
-import Image from './image'
+import Image from 'components/image'
 
 const BackGround = styled.div`
   width: 380px;
@@ -41,12 +40,12 @@ const PokemonStyled = styled.div`
   }
 `
 
-const Pokemon = ({ name, sprites, moves, types, id, loading }) => (
+const Pokemon = ({ name, sprites, moves, types, id }) => (
   <PokemonStyled>
     <BackGround>
       <RightSide type="left" width={500} color="rgba(0,0,0, .2)" height={100}/>
       <LeftSide type="right" width={500} color="rgba(0,0,0, .2)" height={100}/>
-      <Image src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${leftPath(id, 3, 0)}.png`} />
+      <Image src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id.toString().padStart(3,'0')}.png`} />
     </BackGround>
     <Link to={`/pokemon/${id - 1}`}>
       <button>prev</button>

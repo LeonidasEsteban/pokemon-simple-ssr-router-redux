@@ -1,4 +1,4 @@
-import Routes from '../routes'
+import Routes from 'src/routes'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'

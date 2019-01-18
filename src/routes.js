@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router'
-import PokemonPage from './pages/pokemon'
-import HomePage from './pages/home'
-import NotFound from './pages/not-found'
+import PokemonPage from 'pages/pokemon'
+import HomePage from 'pages/home'
+import NotFound from 'pages/not-found'
 
 class Routes extends Component {
   render() {

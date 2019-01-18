@@ -1,5 +1,5 @@
-import ssr from '../../dist/ssr/utils/server-data'
-import configStore from '../utils/config-store'
+import ssr from 'utils/server-data'
+import configStore from 'utils/config-store'
 
 const renderMiddleware = (data, url) => {
   const store = configStore(data)
