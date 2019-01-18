@@ -1,6 +1,7 @@
 const BASE_API = 'https://pokeapi.co/api/v2/'
 import 'isomorphic-fetch'
-// require('es6-promise').polyfill()
+import { polyfill } from 'es6-promise'
+polyfill()
 
 class api {
   async getPokemon(id) {
@@ -11,6 +12,11 @@ class api {
     } catch {
       return false
     }
+  }
+  async getImage(url) {
+    const response = await fetch(url)
+    const data = await response.blob()
+    return data
   }
 }
 

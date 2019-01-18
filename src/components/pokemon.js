@@ -12,7 +12,6 @@ const BackGround = styled.div`
   background: rgba(0,0,0, .2);
   position: relative;
   img {
-    /* opacity: .9; */
     position: relative;
     left: -50px;
   }
@@ -32,46 +31,96 @@ const LeftSide = styled(Triangle)`
     position: absolute;
   }
 `
-
+function color(rgb) {
+  return `rgb(${rgb.toString()})`
+}
 const PokemonStyled = styled.div`
-  /* border: 1px solid red; */
+  background-image: linear-gradient( ${({ palette }) => color(palette[0])}, transparent ), linear-gradient( 90deg, ${({ palette }) => color(palette[1])}, transparent ), linear-gradient( -90deg, ${({ palette }) => color(palette[2])}, transparent );
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-row-gap: 20px;
+  transition: 1s;
+  .details {
+    max-height: 100vh;
+    overflow: auto;
+  }
   .name {
-
+    text-transform: uppercase;
+    font-size: 150px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgba(${({ palette }) => palette[8].toString()}, .5);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  }
+`
+const ColorStyled = styled.div`
+  width: 10vw;
+  height: 50px;
+  display: inline-flex;
+  transition: 1s;
+  background: rgba(${({ color }) => color});
+  animation: color .3s;
+  opacity: .5;
+  @keyframes color {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: .5;
+    }
   }
 `
 
-const Pokemon = ({ name, sprites, moves, types, id }) => (
-  <PokemonStyled>
-    <BackGround>
-      <RightSide type="left" width={500} color="rgba(0,0,0, .2)" height={100}/>
-      <LeftSide type="right" width={500} color="rgba(0,0,0, .2)" height={100}/>
-      <Image src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id.toString().padStart(3,'0')}.png`} />
-    </BackGround>
-    <Link to={`/pokemon/${id - 1}`}>
-      <button>prev</button>
-    </Link>
-    <Link to={`/pokemon/${id + 1}`}>
-      <button>next</button>
-    </Link>
-    <Link to={`/pokemon/sdasdas`}>
-      <button>asdass</button>
-    </Link>
-    <h2 className="name">Nombre: {name}</h2>
-    <hr/>
-    <Image src={sprites.front_default} />
-    <Image src={sprites.back_default} />
-    <Image src={sprites.front_shiny} />
-    <Image src={sprites.back_shiny} />
-    <ul>
-      {types.map(({ type }) => (
-        <PokemonType type={type.name} key={type.name} />
-      ))}
-    </ul>
-    <ol>
-      {moves.map(({ move }) => (
-        <li key={move.name} >{move.name}</li>
-      ))}
-    </ol>
+const Pokemon = ({ name, sprites, moves, types, id, palette }) => (
+  <PokemonStyled palette={palette}>
+    <div>
+      <ColorStyled color={palette[0].toString()} />
+      <ColorStyled color={palette[1].toString()} />
+      <ColorStyled color={palette[2].toString()} />
+      <ColorStyled color={palette[3].toString()} />
+      <ColorStyled color={palette[4].toString()} />
+      <ColorStyled color={palette[5].toString()} />
+      <ColorStyled color={palette[6].toString()} />
+      <ColorStyled color={palette[7].toString()} />
+      <ColorStyled color={palette[8].toString()} />
+      <ColorStyled color={palette[9].toString()} />
+    </div>
+    <div className="details">
+      <BackGround>
+        <RightSide type="left" width={500} color="rgba(0,0,0, .2)" height={100}/>
+        <LeftSide type="right" width={500} color="rgba(0,0,0, .2)" height={100}/>
+        <Image src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id.toString().padStart(3,'0')}.png`} />
+      </BackGround>
+      <Link to={`/pokemon/${id - 1}`}>
+        <button>prev</button>
+      </Link>
+      <Link to={`/pokemon/${id + 1}`}>
+        <button>next</button>
+      </Link>
+      <Link to={`/pokemon/sdasdas`}>
+        <button>asdass</button>
+      </Link>
+      <h2 className="name">{name}</h2>
+      <hr/>
+      <Image src={sprites.front_default} />
+      <Image src={sprites.back_default} />
+      <Image src={sprites.front_shiny} />
+      <Image src={sprites.back_shiny} />
+      <ul>
+        {types.map(({ type }) => (
+          <PokemonType type={type.name} key={type.name} />
+        ))}
+      </ul>
+      <ol>
+        {moves.map(({ move }) => (
+          <li key={move.name} >{move.name}</li>
+        ))}
+      </ol>
+    </div>
   </PokemonStyled>
 )
 

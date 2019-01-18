@@ -4,6 +4,7 @@ import Pokemon from 'components/pokemon'
 import api from 'utils/api'
 import NProgress from 'nprogress'
 import NotFound from 'pages/not-found'
+import ColorThief from 'color-thief'
 
 class PokemonPage extends Component {
   componentWillReceiveProps(nextProps) {
@@ -30,14 +31,23 @@ class PokemonPage extends Component {
       dispatch,
     } = this.props
     NProgress.start()
-    const pokemon = await api.getPokemon(id)
+    let pokemon = await api.getPokemon(id)
+
     if (pokemon) {
-      dispatch({
-        type: 'SET_POKEMON',
-        payload: {
-          pokemon
-        }
-      })
+      const img = new Image()
+      img.crossOrigin = 'anonymous'
+      img.src = pokemon.sprites.front_default
+      img.onload = () => {
+        const colorThief = new ColorThief()
+        const palette = colorThief.getPalette(img, 11)
+        pokemon = { ...pokemon, palette }
+        dispatch({
+          type: 'SET_POKEMON',
+          payload: {
+            pokemon
+          }
+        })
+      }
     } else {
       dispatch({
         type: 'SET_EMPTY',
