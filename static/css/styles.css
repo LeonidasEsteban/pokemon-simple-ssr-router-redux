@@ -1,13 +1,22 @@
 body {
-  background: lightcoral;
-  background: #00F260;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
   font-family: system-ui;
   margin: 0;
-  /* background-image: url('/public/images/pattern2.png'); */
-  /* background-color: #0575E6; */
 }
 
 
+#nprogress .bar {
+  height: 50px;
+  background-color: white;
+  z-index: 1;
+}
+
+#nprogress .spinner-icon {
+  border-left-color: white;
+  border-top-color: white;
+}
+
+
+#nprogress .peg {
+  box-shadow: none;
+}
