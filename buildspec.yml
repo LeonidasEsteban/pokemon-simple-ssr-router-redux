@@ -34,4 +34,4 @@ artifacts:
     - server.js
     - package.json
     - views/*
-    - node_modules/express/*
+    - node_modules/*
