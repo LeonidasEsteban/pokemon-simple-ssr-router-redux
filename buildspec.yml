@@ -30,6 +30,7 @@ phases:
 # ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
 artifacts:
   files:
+    - ./**/*
     - .ebextensions/*
     - dist/*
     - server.js
