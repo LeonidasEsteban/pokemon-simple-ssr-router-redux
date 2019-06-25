@@ -41,7 +41,7 @@ const PokemonStyled = styled.div`
   display: grid;
   grid-template-rows: 50px 1fr;
   grid-row-gap: 20px;
-  transition: 1s;
+  /* transition: 1s; */
   .details {
     max-height: 100vh;
     overflow: auto;
@@ -65,6 +65,8 @@ const ColorStyled = styled.div`
   background: rgba(${({ color }) => color});
   animation: color .3s;
   opacity: .5;
+  position: relative;
+  z-index: 2;
   @keyframes color {
     0% {
       opacity: 0;
@@ -91,8 +93,8 @@ const Pokemon = ({ name, sprites, moves, types, id, palette }) => (
     </div>
     <div className="details">
       <BackGround>
-        <RightSide type="left" width={500} color="rgba(0,0,0, .2)" height={100}/>
-        <LeftSide type="right" width={500} color="rgba(0,0,0, .2)" height={100}/>
+        <RightSide type="left" width={500} color="rgba(0,0,0, .2)" height={130}/>
+        <LeftSide type="right" width={500} color="rgba(0,0,0, .2)" height={130}/>
         <Image src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id.toString().padStart(3,'0')}.png`} />
       </BackGround>
       <Link to={`/pokemon/${id - 1}`}>
