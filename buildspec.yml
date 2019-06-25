@@ -4,8 +4,9 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing Mocha...
+      - echo Installing yarn...
       - npm install -g yarn
+      - sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
