@@ -33,5 +33,5 @@ artifacts:
     - dist/*
     - server.js
     - package.json
-    - src/*
+    - src/view/*
     - node_modules/**/*
