@@ -6,7 +6,7 @@ phases:
     commands:
       - echo Installing yarn...
       - npm install -g yarn
-      - sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+      - apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
