@@ -40,11 +40,10 @@ const PokemonStyled = styled.div`
   overflow: hidden;
   display: grid;
   grid-template-rows: 50px 1fr;
-  grid-row-gap: 20px;
-  /* transition: 1s; */
   .details {
     max-height: 100vh;
     overflow: auto;
+    padding-top: 20px;
   }
   .name {
     text-transform: uppercase;
@@ -77,8 +76,41 @@ const ColorStyled = styled.div`
   }
 `
 
+const NextButton = styled(Triangle)`
+  background: rgba(0,0,0,.2);
+  border: 1px solid red;
+  &:before {
+    right: 100%;
+    top: 0;
+    position: absolute;
+  }
+`
+
+const Types = styled.div`
+  background-image: url('/public/images/thunder.jpg');
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  mask-image: linear-gradient(black, black, transparent);
+`
+const TypesB = styled.div`
+  background-image: url('/public/images/grass.jpg');
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  mask-image: linear-gradient(transparent 50%, black, black, black);
+`
+
 const Pokemon = ({ name, sprites, moves, types, id, palette }) => (
   <PokemonStyled palette={palette}>
+    <Types />
+    <TypesB />
     <div>
       <ColorStyled color={palette[0].toString()} />
       <ColorStyled color={palette[1].toString()} />
@@ -101,28 +133,29 @@ const Pokemon = ({ name, sprites, moves, types, id, palette }) => (
         <button>prev</button>
       </Link>
       <Link to={`/pokemon/${id + 1}`}>
-        <button>next</button>
+        <NextButton>
+          next
+        </NextButton>
       </Link>
       <Link to={`/pokemon/sdasdas`}>
         <button>asdass</button>
       </Link>
       <h2 className="name">{name}</h2>
-      <hr/>
-      <Image src={sprites.front_default} />
-      <Image src={sprites.back_default} />
-      <Image src={sprites.front_shiny} />
-      <Image src={sprites.back_shiny} />
-      <ul>
-        {types.map(({ type }) => (
-          <PokemonType type={type.name} key={type.name} />
-        ))}
-      </ul>
-      <ol>
-        {moves.map(({ move }) => (
-          <li key={move.name} >{move.name}</li>
-        ))}
-      </ol>
     </div>
+    {/* <Image src={sprites.front_default} />
+    <Image src={sprites.back_default} />
+    <Image src={sprites.front_shiny} />
+    <Image src={sprites.back_shiny} /> */}
+    <ul>
+      {types.map(({ type }) => (
+        <PokemonType type={type.name} key={type.name} />
+      ))}
+    </ul>
+    {/* <ol>
+      {moves.map(({ move }) => (
+        <li key={move.name} >{move.name}</li>
+      ))}
+    </ol> */}
   </PokemonStyled>
 )
 

@@ -8,6 +8,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
   },
+  node: {
+    fs: 'empty'
+  },
+  externals: {
+    canvas: "commonjs canvas" // Important (2)
+  },
   devtool: 'inline-source-map',
   module: {
     rules: [
